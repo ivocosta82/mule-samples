@@ -26,7 +26,7 @@ http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/
     <tls:context name="TLS_Context" doc:name="TLS Context">
         <tls:key-store type="jks" path="keystore.jks" keyPassword="mulesoft" password="mulesoft"/>
     </tls:context>
-    <db:mysql-config name="MySQL_Configuration" host="${db.host}" port="3306" user="${db.user}" password="${db.password}" database="mule_test" doc:name="MySQL Configuration"/>
+    <db:mysql-config name="MySQL_Configuration" host="${db.host}" port="${db.port}" user="${db.user}" password="${db.password}" database="mule_test" doc:name="MySQL Configuration"/>
     <db:template-query name="insertquake" doc:name="Template Query">
         <db:parameterized-query><![CDATA[INSERT INTO `mule_test`.`earthquakes` (`latitude`, `longitude`, `timestamp`, `magnitude`) VALUES (:latitude, :longitude, :timestamp, :magnitude);]]></db:parameterized-query>
         <db:in-param name="latitude" type="DECIMAL" defaultValue="0"/>
