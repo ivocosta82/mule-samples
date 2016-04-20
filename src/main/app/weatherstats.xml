@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:jms="http://www.mulesoft.org/schema/mule/jms" xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:dynamicsax="http://www.mulesoft.org/schema/mule/dynamicsax" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/dynamicsax http://www.mulesoft.org/schema/mule/dynamicsax/current/mule-dynamicsax.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" basePath="/WeatherStats" doc:name="HTTP Listener Configuration" protocol="HTTPS" tlsContext-ref="TLS_Context">
+    </http:listener-config>
+    <ws:consumer-config name="Web_Service_Consumer" wsdlLocation="http://www.webservicex.com/globalweather.asmx?WSDL" service="GlobalWeather" port="GlobalWeatherSoap12" serviceAddress="http://www.webservicex.com/globalweather.asmx" doc:name="Web Service Consumer"/>
+    <ws:consumer-config name="Web_Service_Consumer1" wsdlLocation="http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL" service="Weather" port="WeatherSoap12" serviceAddress="http://wsf.cdyne.com/WeatherWS/Weather.asmx" doc:name="Web Service Consumer"/>
+    <http:request-config name="HTTP_Request_Configuration" host="www.seismicportal.eu" basePath="/fdsnws/event/1" doc:name="HTTP Request Configuration" port="80"/>
+    <file:connector name="File" writeToDirectory="C:\Apps" autoDelete="true" streaming="true" validateConnections="true" doc:name="File"/>
+    <asynchronous-processing-strategy name="Asynchronous_Processing_Strategy" doc:name="Asynchronous Processing Strategy"/>
+    <tls:context name="TLS_Context" doc:name="TLS Context">
+        <tls:key-store type="jks" path="keystore.jks" keyPassword="mulesoft" password="mulesoft"/>
+    </tls:context>
+    <db:mysql-config name="MySQL_Configuration" host="localhost" port="3306" user="mule" password="mulesoft" database="mule_test" doc:name="MySQL Configuration"/>
+    <db:template-query name="insertquake" doc:name="Template Query">
+        <db:parameterized-query><![CDATA[INSERT INTO `mule_test`.`earthquakes` (`latitude`, `longitude`, `timestamp`, `magnitude`) VALUES (:latitude, :longitude, :timestamp, :magnitude);]]></db:parameterized-query>
+        <db:in-param name="latitude" type="DECIMAL" defaultValue="0"/>
+        <db:in-param name="longitude" type="DECIMAL" defaultValue="0"/>
+        <db:in-param name="timestamp" type="DATE" defaultValue="1980"/>
+        <db:in-param name="magnitude" type="DECIMAL" defaultValue="0"/>
+    </db:template-query>
+    <flow name="weatherstatsFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/getWeather" allowedMethods="GET" doc:name="HTTP"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml
+%namespace ns0 http://www.webserviceX.NET
+%namespace ns01 http://ws.cdyne.com/WeatherWS/
+---
+{
+	ns01#GetCityWeatherByZIP: {
+		ns01#ZIP: inboundProperties."http.query.params".zipCode as :string
+	}
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <async doc:name="Async">
+            <flow-ref name="weatherstatsSub_Flow" doc:name="weatherstatsSub_Flow"/>
+        </async>
+        <ws:consumer config-ref="Web_Service_Consumer1" operation="GetCityWeatherByZIP" doc:name="Web Service Consumer"/>
+    </flow>
+    <sub-flow name="weatherstatsSub_Flow">
+        <object-to-string-transformer doc:name="Object to String"/>
+        <logger message="#[payload.toString()]" level="INFO" doc:name="Logger"/>
+    </sub-flow>
+    <flow name="Eartquakes-ws">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/earth" doc:name="HTTPS" allowedMethods="GET"/>
+        <http:request config-ref="HTTP_Request_Configuration" path="/query?orderby=time-asc&amp;limit=1000" method="GET" doc:name="HTTP"/>
+        <dw:transform-message metadata:id="dc8f4144-21b8-481c-b478-08643969aa1a" doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/csv
+%namespace ns1 http://quakeml.org/xmlns/quakeml/1.2
+%namespace ns0 http://quakeml.org/xmlns/bed/1.2
+---
+payload.ns1#quakeml.ns0#eventParameters.*ns0#event map ((event , indexOfEvent) -> {
+	location_x: event.ns0#origin.ns0#time.*ns0#value[0]
+})]]></dw:set-payload>
+        </dw:transform-message>
+
+    </flow>
+    <flow name="Earthquake-poll" processingStrategy="synchronous">
+        <poll doc:name="Poll">
+            <fixed-frequency-scheduler frequency="30" timeUnit="SECONDS"/>
+            <watermark variable="lastDate" default-expression="#[new org.mule.el.datetime.DateTime(&quot;1980-04-15T11:44:32.0Z&quot;)]" selector-expression="#ns1#quakeml.ns0#eventParameters.*ns0#event.*ns0#origin.ns0#time.*ns0#value[0]]" update-expression="#[lastDate = flowVars.lastDate]"/>
+            <http:request config-ref="HTTP_Request_Configuration" path="/query?orderby=time-asc&amp;limit=1000&amp;start=#[flowVars.lastDate.format()]" method="GET" doc:name="HTTP"/>
+        </poll>
+        <dw:transform-message metadata:id="ee5b5e0c-ab3a-4b33-bc07-9c954324e7a5" doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+%namespace ns1 http://quakeml.org/xmlns/quakeml/1.2
+%namespace ns0 http://quakeml.org/xmlns/bed/1.2
+---
+payload.ns1#quakeml.ns0#eventParameters.*ns0#event map ((event , indexOfEvent) -> {
+	timestamp: event.ns0#origin.ns0#time.*ns0#value[0] as :string,
+	latitude: event.ns0#origin.ns0#latitude.*ns0#value[0],
+	longitude: event.ns0#origin.ns0#longitude.*ns0#value[0]
+})
+]]></dw:set-payload>
+        </dw:transform-message>
+        <foreach doc:name="For Each">
+            <set-variable variableName="recordDate" value="#[payload['timestamp']]" doc:name="Variable"/>
+            <db:insert config-ref="MySQL_Configuration" doc:name="Ubuntu MySQL">
+                <db:parameterized-query><![CDATA[INSERT INTO `mule_test`.`earthquakes` (`latitude`, `longitude`, `timestamp`, `magnitude`) VALUES (#[payload['latitude']], #[payload['longitude']], '1992-01-20 12:12:12', 0);]]></db:parameterized-query>
+            </db:insert>
+            <expression-component doc:name="Expression"><![CDATA[#[
+if (flowVars.lastDate.isBefore(new org.mule.el.datetime.DateTime(flowVars.recordDate))) { 
+	flowVars.lastDate = new org.mule.el.datetime.DateTime(flowVars.recordDate);
+}
+]]]></expression-component>
+        </foreach>
+        <logger message="End: #[flowVars.lastDate.format()]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="gnuplot-provider">
+        <poll doc:name="Poll">
+            <fixed-frequency-scheduler frequency="5" startDelay="1" timeUnit="MINUTES"/>
+            <db:select config-ref="MySQL_Configuration" doc:name="Ubuntu MySQL - Select">
+                <db:parameterized-query><![CDATA[select latitude, longitude from earthquakes]]></db:parameterized-query>
+            </db:select>
+        </poll>
+        <dw:transform-message metadata:id="be27038e-71a5-4533-b3f9-7ed67c3bd12d" doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/csv
+---
+payload map ((payload01 , indexOfPayload01) -> {
+	location_x: payload01.longitude as :string,
+	location_y: payload01.latitude as :string
+})]]></dw:set-payload>
+        </dw:transform-message>
+        <file:outbound-endpoint path="C:\Apps" outputPattern="earthquakes.csv" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+    </flow>
+
+</mule>

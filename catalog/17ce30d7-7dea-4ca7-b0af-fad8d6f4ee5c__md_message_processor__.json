@@ -1,0 +1,16 @@
+{
+    "inputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "QuakeML"
+        }
+    },
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "coordinates"
+        }
+    },
+    "id": "17ce30d7-7dea-4ca7-b0af-fad8d6f4ee5c",
+    "version": "5.2.0.0"
+}

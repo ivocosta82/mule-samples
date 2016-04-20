@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {},
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "coordinates"
+        }
+    },
+    "id": "be27038e-71a5-4533-b3f9-7ed67c3bd12d",
+    "version": "5.2.0.0"
+}

@@ -1,0 +1,537 @@
+<?xml version="1.0"?>
+<q:quakeml xmlns:q="http://quakeml.org/xmlns/quakeml/1.2"  xmlns="http://quakeml.org/xmlns/bed/1.2">
+<eventParameters publicID="smi:eu.emsc/unid">
+<event publicID="quakeml:eu.emsc/event/20160418_0000072">
+  <preferredOriginID>quakeml:eu.emsc/event/20160418_0000072/origin/BIJO4</preferredOriginID>
+  <preferredMagnitudeID>quakeml:eu.emsc/event/20160418_0000072/origin/BIJO4/mag/1</preferredMagnitudeID>
+  <creationInfo>
+    <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+    <authorURI>smi:smi-registry/organization/GUC</authorURI>
+    <creationTime>2016-04-18T15:12:03.69992Z</creationTime>
+  </creationInfo>
+  <description>
+    <text>VALPARAISO, CHILE</text>
+    <type>Flinn-Engdahl region</type>
+  </description>
+  <origin publicID="quakeml:eu.emsc/event/20160418_0000072/origin/BIJO4">
+    <time>
+      <value>2016-04-18T14:54:55.0Z</value>
+    </time>
+    <latitude>
+      <value>-32.6</value>
+    </latitude>
+    <longitude>
+      <value>-71.37</value>
+    </longitude>
+    <depth>
+      <value>46000.0</value>
+    </depth>
+    <depthType>from location</depthType>
+    <methodID>smi:eu.emsc-csem/origin_method/GEIGER</methodID>
+    <quality>
+      <usedPhaseCount>17</usedPhaseCount>
+      <usedStationCount>17</usedStationCount>
+      <azimuthalGap>144</azimuthalGap>
+      <minimumDistance>0.48</minimumDistance>
+      <maximumDistance>2.84</maximumDistance>
+    </quality>
+    <evaluationMode>manual</evaluationMode>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/GUC</authorURI>
+    </creationInfo>
+  </origin>
+  <magnitude publicID="quakeml:eu.emsc/event/20160418_0000072/origin/BIJO4/mag/1">
+    <mag>
+      <value>3.7</value>
+    </mag>
+    <type>ml</type>
+    <originID>quakeml:eu.emsc/event/20160418_0000072/origin/BIJO4</originID>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/GUC</authorURI>
+    </creationInfo>
+  </magnitude>
+</event>
+<event publicID="quakeml:eu.emsc/event/20160418_0000071">
+  <preferredOriginID>quakeml:eu.emsc/event/20160418_0000071/origin/BIJL2</preferredOriginID>
+  <preferredMagnitudeID>quakeml:eu.emsc/event/20160418_0000071/origin/BIJL2/mag/1</preferredMagnitudeID>
+  <creationInfo>
+    <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+    <authorURI>smi:smi-registry/organization/NNC</authorURI>
+    <creationTime>2016-04-18T14:25:50.394056Z</creationTime>
+  </creationInfo>
+  <description>
+    <text>EASTERN KAZAKHSTAN</text>
+    <type>Flinn-Engdahl region</type>
+  </description>
+  <origin publicID="quakeml:eu.emsc/event/20160418_0000071/origin/BIJL2">
+    <time>
+      <value>2016-04-18T14:06:21.4Z</value>
+    </time>
+    <latitude>
+      <value>42.67</value>
+    </latitude>
+    <longitude>
+      <value>79.95</value>
+    </longitude>
+    <depth>
+      <value>1000.0</value>
+    </depth>
+    <depthType>from location</depthType>
+    <methodID>smi:eu.emsc-csem/origin_method/GEIGER</methodID>
+    <quality>
+      <usedPhaseCount>12</usedPhaseCount>
+      <usedStationCount>8</usedStationCount>
+      <azimuthalGap>249</azimuthalGap>
+      <minimumDistance>0.74</minimumDistance>
+      <maximumDistance>7.72</maximumDistance>
+    </quality>
+    <evaluationMode>manual</evaluationMode>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/NNC</authorURI>
+    </creationInfo>
+  </origin>
+  <magnitude publicID="quakeml:eu.emsc/event/20160418_0000071/origin/BIJL2/mag/1">
+    <mag>
+      <value>3.9</value>
+    </mag>
+    <type>mb</type>
+    <originID>quakeml:eu.emsc/event/20160418_0000071/origin/BIJL2</originID>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/NNC</authorURI>
+    </creationInfo>
+  </magnitude>
+</event>
+<event publicID="quakeml:eu.emsc/event/20160418_0000069">
+  <preferredOriginID>quakeml:eu.emsc/event/20160418_0000069/origin/BIJK5</preferredOriginID>
+  <preferredMagnitudeID>quakeml:eu.emsc/event/20160418_0000069/origin/BIJK5/mag/1</preferredMagnitudeID>
+  <creationInfo>
+    <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+    <authorURI>smi:smi-registry/organization/ISK</authorURI>
+    <creationTime>2016-04-18T14:10:00.943657Z</creationTime>
+  </creationInfo>
+  <description>
+    <text>EASTERN TURKEY</text>
+    <type>Flinn-Engdahl region</type>
+  </description>
+  <origin publicID="quakeml:eu.emsc/event/20160418_0000069/origin/BIJK5">
+    <time>
+      <value>2016-04-18T13:51:50.0Z</value>
+    </time>
+    <latitude>
+      <value>39.63</value>
+    </latitude>
+    <longitude>
+      <value>38.25</value>
+    </longitude>
+    <depth>
+      <value>18000.0</value>
+    </depth>
+    <depthType>from location</depthType>
+    <methodID>smi:eu.emsc-csem/origin_method/GEIGER</methodID>
+    <quality>
+      <usedPhaseCount>17</usedPhaseCount>
+      <usedStationCount>13</usedStationCount>
+      <azimuthalGap>58</azimuthalGap>
+      <minimumDistance>0.30</minimumDistance>
+      <maximumDistance>2.27</maximumDistance>
+    </quality>
+    <evaluationMode>manual</evaluationMode>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/ISK</authorURI>
+    </creationInfo>
+  </origin>
+  <magnitude publicID="quakeml:eu.emsc/event/20160418_0000069/origin/BIJK5/mag/1">
+    <mag>
+      <value>2.4</value>
+    </mag>
+    <type>ml</type>
+    <originID>quakeml:eu.emsc/event/20160418_0000069/origin/BIJK5</originID>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/ISK</authorURI>
+    </creationInfo>
+  </magnitude>
+</event>
+<event publicID="quakeml:eu.emsc/event/20160418_0000068">
+  <preferredOriginID>quakeml:eu.emsc/event/20160418_0000068/origin/BIJI6</preferredOriginID>
+  <preferredMagnitudeID>quakeml:eu.emsc/event/20160418_0000068/origin/BIJI6/mag/1</preferredMagnitudeID>
+  <creationInfo>
+    <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+    <authorURI>smi:smi-registry/organization/NC</authorURI>
+    <creationTime>2016-04-18T13:48:36.751668Z</creationTime>
+  </creationInfo>
+  <description>
+    <text>NORTHERN CALIFORNIA</text>
+    <type>Flinn-Engdahl region</type>
+  </description>
+  <origin publicID="quakeml:eu.emsc/event/20160418_0000068/origin/BIJI6">
+    <time>
+      <value>2016-04-18T13:46:22.7Z</value>
+    </time>
+    <latitude>
+      <value>39.16</value>
+    </latitude>
+    <longitude>
+      <value>-123.15</value>
+    </longitude>
+    <depth>
+      <value>8000.0</value>
+    </depth>
+    <depthType>from location</depthType>
+    <methodID>smi:eu.emsc-csem/origin_method/GEIGER</methodID>
+    <quality>
+      <usedPhaseCount>7</usedPhaseCount>
+      <usedStationCount>7</usedStationCount>
+      <standardError>0.02</standardError>
+      <azimuthalGap>192</azimuthalGap>
+      <minimumDistance>0.12</minimumDistance>
+      <maximumDistance>0.41</maximumDistance>
+    </quality>
+    <evaluationMode>automatic</evaluationMode>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/NC</authorURI>
+    </creationInfo>
+  </origin>
+  <magnitude publicID="quakeml:eu.emsc/event/20160418_0000068/origin/BIJI6/mag/1">
+    <mag>
+      <value>2.0</value>
+    </mag>
+    <type>md</type>
+    <originID>quakeml:eu.emsc/event/20160418_0000068/origin/BIJI6</originID>
+    <stationCount>6</stationCount>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/NC</authorURI>
+    </creationInfo>
+  </magnitude>
+</event>
+<event publicID="quakeml:eu.emsc/event/20160418_0000067">
+  <preferredOriginID>quakeml:eu.emsc/event/20160418_0000067/origin/BIJK9</preferredOriginID>
+  <preferredMagnitudeID>quakeml:eu.emsc/event/20160418_0000067/origin/BIJK9/mag/1</preferredMagnitudeID>
+  <creationInfo>
+    <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+    <authorURI>smi:smi-registry/organization/EMSC</authorURI>
+    <creationTime>2016-04-18T14:03:52.509201Z</creationTime>
+  </creationInfo>
+  <description>
+    <text>NEAR COAST OF ECUADOR</text>
+    <type>Flinn-Engdahl region</type>
+  </description>
+  <origin publicID="quakeml:eu.emsc/event/20160418_0000067/origin/BIJK9">
+    <time>
+      <value>2016-04-18T13:25:48.5Z</value>
+      <uncertainty>0.05</uncertainty>
+    </time>
+    <latitude>
+      <value>-0.33</value>
+    </latitude>
+    <longitude>
+      <value>-80.36</value>
+    </longitude>
+    <depth>
+      <value>40000.0</value>
+    </depth>
+    <depthType>from location</depthType>
+    <methodID>smi:eu.emsc-csem/origin_method/NA</methodID>
+    <quality>
+      <usedPhaseCount>57</usedPhaseCount>
+      <usedStationCount>55</usedStationCount>
+      <standardError>0.93</standardError>
+      <azimuthalGap>136</azimuthalGap>
+      <minimumDistance>1.89</minimumDistance>
+      <maximumDistance>126.72</maximumDistance>
+    </quality>
+    <evaluationMode>automatic</evaluationMode>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/EMSC</authorURI>
+    </creationInfo>
+  </origin>
+  <magnitude publicID="quakeml:eu.emsc/event/20160418_0000067/origin/BIJK9/mag/1">
+    <mag>
+      <value>5.1</value>
+      <uncertainty>0.3</uncertainty>
+    </mag>
+    <type>mb</type>
+    <originID>quakeml:eu.emsc/event/20160418_0000067/origin/BIJK9</originID>
+    <stationCount>32</stationCount>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/EMSC</authorURI>
+    </creationInfo>
+  </magnitude>
+</event>
+<event publicID="quakeml:eu.emsc/event/20160418_0000070">
+  <preferredOriginID>quakeml:eu.emsc/event/20160418_0000070/origin/BIJL6</preferredOriginID>
+  <preferredMagnitudeID>quakeml:eu.emsc/event/20160418_0000070/origin/BIJL6/mag/1</preferredMagnitudeID>
+  <creationInfo>
+    <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+    <authorURI>smi:smi-registry/organization/THE</authorURI>
+    <creationTime>2016-04-18T14:22:46.89011Z</creationTime>
+  </creationInfo>
+  <description>
+    <text>GREECE</text>
+    <type>Flinn-Engdahl region</type>
+  </description>
+  <origin publicID="quakeml:eu.emsc/event/20160418_0000070/origin/BIJL6">
+    <time>
+      <value>2016-04-18T13:07:52.3Z</value>
+    </time>
+    <latitude>
+      <value>38.73</value>
+    </latitude>
+    <longitude>
+      <value>20.59</value>
+    </longitude>
+    <depth>
+      <value>9000.0</value>
+    </depth>
+    <depthType>from location</depthType>
+    <methodID>smi:eu.emsc-csem/origin_method/GEIGER</methodID>
+    <quality>
+      <usedPhaseCount>20</usedPhaseCount>
+      <usedStationCount>11</usedStationCount>
+      <azimuthalGap>186</azimuthalGap>
+      <minimumDistance>0.05</minimumDistance>
+      <maximumDistance>1.05</maximumDistance>
+    </quality>
+    <evaluationMode>manual</evaluationMode>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/THE</authorURI>
+    </creationInfo>
+  </origin>
+  <magnitude publicID="quakeml:eu.emsc/event/20160418_0000070/origin/BIJL6/mag/1">
+    <mag>
+      <value>2.1</value>
+    </mag>
+    <type>ml</type>
+    <originID>quakeml:eu.emsc/event/20160418_0000070/origin/BIJL6</originID>
+    <stationCount>4</stationCount>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/THE</authorURI>
+    </creationInfo>
+  </magnitude>
+</event>
+<event publicID="quakeml:eu.emsc/event/20160418_0000065">
+  <preferredOriginID>quakeml:eu.emsc/event/20160418_0000065/origin/BIJG0</preferredOriginID>
+  <preferredMagnitudeID>quakeml:eu.emsc/event/20160418_0000065/origin/BIJG0/mag/1</preferredMagnitudeID>
+  <creationInfo>
+    <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+    <authorURI>smi:smi-registry/organization/EMSC</authorURI>
+    <creationTime>2016-04-18T13:40:55.447876Z</creationTime>
+  </creationInfo>
+  <description>
+    <text>VANUATU</text>
+    <type>Flinn-Engdahl region</type>
+  </description>
+  <origin publicID="quakeml:eu.emsc/event/20160418_0000065/origin/BIJG0">
+    <time>
+      <value>2016-04-18T13:06:10.6Z</value>
+      <uncertainty>0.28</uncertainty>
+    </time>
+    <latitude>
+      <value>-19.48</value>
+    </latitude>
+    <longitude>
+      <value>169.11</value>
+    </longitude>
+    <depth>
+      <value>72000.0</value>
+      <uncertainty>2.6</uncertainty>
+    </depth>
+    <depthType>from location</depthType>
+    <methodID>smi:eu.emsc-csem/origin_method/NA</methodID>
+    <quality>
+      <usedPhaseCount>277</usedPhaseCount>
+      <usedStationCount>271</usedStationCount>
+      <standardError>1.09</standardError>
+      <azimuthalGap>44</azimuthalGap>
+      <minimumDistance>2.19</minimumDistance>
+      <maximumDistance>162.22</maximumDistance>
+    </quality>
+    <evaluationMode>manual</evaluationMode>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/EMSC</authorURI>
+    </creationInfo>
+  </origin>
+  <magnitude publicID="quakeml:eu.emsc/event/20160418_0000065/origin/BIJG0/mag/1">
+    <mag>
+      <value>5.9</value>
+      <uncertainty>0.3</uncertainty>
+    </mag>
+    <type>mw</type>
+    <originID>quakeml:eu.emsc/event/20160418_0000065/origin/BIJG0</originID>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/EMSC</authorURI>
+    </creationInfo>
+  </magnitude>
+</event>
+<event publicID="quakeml:eu.emsc/event/20160418_0000064">
+  <preferredOriginID>quakeml:eu.emsc/event/20160418_0000064/origin/BIIP3</preferredOriginID>
+  <preferredMagnitudeID>quakeml:eu.emsc/event/20160418_0000064/origin/BIIP3/mag/1</preferredMagnitudeID>
+  <creationInfo>
+    <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+    <authorURI>smi:smi-registry/organization/GUC</authorURI>
+    <creationTime>2016-04-18T13:05:13.331421Z</creationTime>
+  </creationInfo>
+  <description>
+    <text>ANTOFAGASTA, CHILE</text>
+    <type>Flinn-Engdahl region</type>
+  </description>
+  <origin publicID="quakeml:eu.emsc/event/20160418_0000064/origin/BIIP3">
+    <time>
+      <value>2016-04-18T12:50:41.0Z</value>
+    </time>
+    <latitude>
+      <value>-21.71</value>
+    </latitude>
+    <longitude>
+      <value>-68.41</value>
+    </longitude>
+    <depth>
+      <value>125000.0</value>
+    </depth>
+    <depthType>from location</depthType>
+    <methodID>smi:eu.emsc-csem/origin_method/GEIGER</methodID>
+    <quality>
+      <usedPhaseCount>11</usedPhaseCount>
+      <usedStationCount>11</usedStationCount>
+      <azimuthalGap>227</azimuthalGap>
+      <minimumDistance>0.78</minimumDistance>
+      <maximumDistance>2.26</maximumDistance>
+    </quality>
+    <evaluationMode>manual</evaluationMode>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/GUC</authorURI>
+    </creationInfo>
+  </origin>
+  <magnitude publicID="quakeml:eu.emsc/event/20160418_0000064/origin/BIIP3/mag/1">
+    <mag>
+      <value>3.2</value>
+    </mag>
+    <type>ml</type>
+    <originID>quakeml:eu.emsc/event/20160418_0000064/origin/BIIP3</originID>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/GUC</authorURI>
+    </creationInfo>
+  </magnitude>
+</event>
+<event publicID="quakeml:eu.emsc/event/20160418_0000063">
+  <preferredOriginID>quakeml:eu.emsc/event/20160418_0000063/origin/BIIP4</preferredOriginID>
+  <preferredMagnitudeID>quakeml:eu.emsc/event/20160418_0000063/origin/BIIP4/mag/1</preferredMagnitudeID>
+  <creationInfo>
+    <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+    <authorURI>smi:smi-registry/organization/ISK</authorURI>
+    <creationTime>2016-04-18T13:04:42.41433Z</creationTime>
+  </creationInfo>
+  <description>
+    <text>CENTRAL TURKEY</text>
+    <type>Flinn-Engdahl region</type>
+  </description>
+  <origin publicID="quakeml:eu.emsc/event/20160418_0000063/origin/BIIP4">
+    <time>
+      <value>2016-04-18T12:48:44.1Z</value>
+    </time>
+    <latitude>
+      <value>38.79</value>
+    </latitude>
+    <longitude>
+      <value>37.84</value>
+    </longitude>
+    <depth>
+      <value>12000.0</value>
+    </depth>
+    <depthType>from location</depthType>
+    <methodID>smi:eu.emsc-csem/origin_method/GEIGER</methodID>
+    <quality>
+      <usedPhaseCount>9</usedPhaseCount>
+      <usedStationCount>6</usedStationCount>
+      <azimuthalGap>95</azimuthalGap>
+      <minimumDistance>0.36</minimumDistance>
+      <maximumDistance>1.30</maximumDistance>
+    </quality>
+    <evaluationMode>manual</evaluationMode>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/ISK</authorURI>
+    </creationInfo>
+  </origin>
+  <magnitude publicID="quakeml:eu.emsc/event/20160418_0000063/origin/BIIP4/mag/1">
+    <mag>
+      <value>2.1</value>
+    </mag>
+    <type>ml</type>
+    <originID>quakeml:eu.emsc/event/20160418_0000063/origin/BIIP4</originID>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/ISK</authorURI>
+    </creationInfo>
+  </magnitude>
+</event>
+<event publicID="quakeml:eu.emsc/event/20160418_0000066">
+  <preferredOriginID>quakeml:eu.emsc/event/20160418_0000066/origin/BIJD8</preferredOriginID>
+  <preferredMagnitudeID>quakeml:eu.emsc/event/20160418_0000066/origin/BIJD8/mag/1</preferredMagnitudeID>
+  <creationInfo>
+    <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+    <authorURI>smi:smi-registry/organization/THE</authorURI>
+    <creationTime>2016-04-18T13:32:41.9412Z</creationTime>
+  </creationInfo>
+  <description>
+    <text>CRETE, GREECE</text>
+    <type>Flinn-Engdahl region</type>
+  </description>
+  <origin publicID="quakeml:eu.emsc/event/20160418_0000066/origin/BIJD8">
+    <time>
+      <value>2016-04-18T12:38:55.1Z</value>
+    </time>
+    <latitude>
+      <value>35.25</value>
+    </latitude>
+    <longitude>
+      <value>26.7</value>
+    </longitude>
+    <depth>
+      <value>1000.0</value>
+    </depth>
+    <depthType>from location</depthType>
+    <methodID>smi:eu.emsc-csem/origin_method/GEIGER</methodID>
+    <quality>
+      <usedPhaseCount>9</usedPhaseCount>
+      <usedStationCount>5</usedStationCount>
+      <azimuthalGap>200</azimuthalGap>
+      <minimumDistance>0.42</minimumDistance>
+      <maximumDistance>1.64</maximumDistance>
+    </quality>
+    <evaluationMode>manual</evaluationMode>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/THE</authorURI>
+    </creationInfo>
+  </origin>
+  <magnitude publicID="quakeml:eu.emsc/event/20160418_0000066/origin/BIJD8/mag/1">
+    <mag>
+      <value>2.8</value>
+    </mag>
+    <type>ml</type>
+    <originID>quakeml:eu.emsc/event/20160418_0000066/origin/BIJD8</originID>
+    <stationCount>3</stationCount>
+    <creationInfo>
+      <agencyURI>smi:smi-registry/organization/EMSC</agencyURI>
+      <authorURI>smi:smi-registry/organization/THE</authorURI>
+    </creationInfo>
+  </magnitude>
+</event>
+</eventParameters>
+</q:quakeml>
