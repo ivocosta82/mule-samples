@@ -85,20 +85,20 @@ payload.ns1#quakeml.ns0#eventParameters.*ns0#event map ((event , indexOfEvent) -
 %namespace ns0 http://quakeml.org/xmlns/bed/1.2
 ---
 payload.ns1#quakeml.ns0#eventParameters.*ns0#event map ((event , indexOfEvent) -> {
-	timestamp: event.ns0#origin.ns0#time.*ns0#value[0] as :string,
+	timestamp: event.ns0#origin.ns0#time.*ns0#value[0] as :datetime,
 	latitude: event.ns0#origin.ns0#latitude.*ns0#value[0],
 	longitude: event.ns0#origin.ns0#longitude.*ns0#value[0]
 })
 ]]></dw:set-payload>
         </dw:transform-message>
         <foreach doc:name="For Each">
-            <set-variable variableName="recordDate" value="#[payload['timestamp']]" doc:name="Store timestamp"/>
+            <set-variable variableName="recordDate" value="#[new org.mule.el.datetime.DateTime(payload['timestamp'])]" doc:name="Store timestamp"/>
             <db:insert config-ref="MySQL_Configuration" doc:name="Ubuntu MySQL">
                 <db:parameterized-query><![CDATA[INSERT INTO `mule_test`.`earthquakes` (`latitude`, `longitude`, `timestamp`, `magnitude`) VALUES (#[payload['latitude']], #[payload['longitude']], '1992-01-20 12:12:12', 0);]]></db:parameterized-query>
             </db:insert>
             <expression-component doc:name="Update watermark"><![CDATA[#[
-if (flowVars.lastDate.isBefore(new org.mule.el.datetime.DateTime(flowVars.recordDate))) { 
-	flowVars.lastDate = new org.mule.el.datetime.DateTime(flowVars.recordDate);
+if (flowVars.lastDate.isBefore(flowVars.recordDate)) { 
+	flowVars.lastDate = flowVars.recordDate;
 }
 ]]]></expression-component>
         </foreach>
