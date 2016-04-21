@@ -94,15 +94,15 @@ payload.ns1#quakeml.ns0#eventParameters.*ns0#event map ((event , indexOfEvent) -
         <foreach doc:name="For Each">
             <set-variable variableName="recordDate" value="#[new org.mule.el.datetime.DateTime(payload['timestamp'])]" doc:name="Store timestamp"/>
             <db:insert config-ref="MySQL_Configuration" doc:name="Ubuntu MySQL">
-                <db:parameterized-query><![CDATA[INSERT INTO `mule_test`.`earthquakes` (`latitude`, `longitude`, `timestamp`, `magnitude`) VALUES (#[payload['latitude']], #[payload['longitude']], '1992-01-20 12:12:12', 0);]]></db:parameterized-query>
+                <db:parameterized-query><![CDATA[INSERT INTO `mule_test`.`earthquakes` (`latitude`, `longitude`, `timestamp`, `magnitude`) VALUES (#[payload['latitude']], #[payload['longitude']], #[flowVars.recordDate.format('yyyy-MM-dd HH:mm:ss')], 0);]]></db:parameterized-query>
             </db:insert>
             <expression-component doc:name="Update watermark"><![CDATA[#[
 if (flowVars.lastDate.isBefore(flowVars.recordDate)) { 
-	flowVars.lastDate = flowVars.recordDate;
+	flowVars.lastDate = flowVars.recordDate.plusMilliSeconds(1);
 }
 ]]]></expression-component>
         </foreach>
-        <logger message="End: #[flowVars.lastDate.format()]" level="INFO" doc:name="Logger"/>
+        <logger message="End: #[payload.size() + ' read - last: ' + flowVars.lastDate.format()]" level="INFO" doc:name="Logger"/>
     </flow>
     <flow name="gnuplot-provider">
         <poll doc:name="Poll">
