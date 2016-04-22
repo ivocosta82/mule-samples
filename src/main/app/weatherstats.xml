@@ -85,6 +85,8 @@ payload.ns1#quakeml.ns0#eventParameters.*ns0#event map ((event , indexOfEvent) -
 %namespace ns0 http://quakeml.org/xmlns/bed/1.2
 ---
 payload.ns1#quakeml.ns0#eventParameters.*ns0#event map ((event , indexOfEvent) -> {
+	magnitude: event.ns0#magnitude.ns0#mag.*ns0#value[0],
+	depthValue: event.ns0#origin.ns0#depth.*ns0#value[0],
 	timestamp: event.ns0#origin.ns0#time.*ns0#value[0] as :datetime,
 	latitude: event.ns0#origin.ns0#latitude.*ns0#value[0],
 	longitude: event.ns0#origin.ns0#longitude.*ns0#value[0]
@@ -94,7 +96,7 @@ payload.ns1#quakeml.ns0#eventParameters.*ns0#event map ((event , indexOfEvent) -
         <foreach doc:name="For Each">
             <set-variable variableName="recordDate" value="#[new org.mule.el.datetime.DateTime(payload['timestamp'])]" doc:name="Store timestamp"/>
             <db:insert config-ref="MySQL_Configuration" doc:name="Ubuntu MySQL">
-                <db:parameterized-query><![CDATA[INSERT INTO `mule_test`.`earthquakes` (`latitude`, `longitude`, `timestamp`, `magnitude`) VALUES (#[payload['latitude']], #[payload['longitude']], #[flowVars.recordDate.format('yyyy-MM-dd HH:mm:ss')], 0);]]></db:parameterized-query>
+                <db:parameterized-query><![CDATA[INSERT INTO `mule_test`.`earthquakes` (`latitude`, `longitude`, `depthValue`, `timestamp`, `magnitude`) VALUES (#[payload['latitude']], #[payload['longitude']], #[payload['depthValue']], #[flowVars.recordDate.format('yyyy-MM-dd HH:mm:ss')], #[payload['magnitude']]);]]></db:parameterized-query>
             </db:insert>
             <expression-component doc:name="Update watermark"><![CDATA[#[
 if (flowVars.lastDate.isBefore(flowVars.recordDate)) { 
@@ -108,7 +110,7 @@ if (flowVars.lastDate.isBefore(flowVars.recordDate)) {
         <poll doc:name="Poll">
             <fixed-frequency-scheduler frequency="5" startDelay="1" timeUnit="MINUTES"/>
             <db:select config-ref="MySQL_Configuration" doc:name="Ubuntu MySQL - Select">
-                <db:parameterized-query><![CDATA[select latitude, longitude from earthquakes]]></db:parameterized-query>
+                <db:parameterized-query><![CDATA[select latitude, longitude, depthValue from earthquakes]]></db:parameterized-query>
             </db:select>
         </poll>
         <dw:transform-message metadata:id="be27038e-71a5-4533-b3f9-7ed67c3bd12d" doc:name="Transform Message">
@@ -117,7 +119,8 @@ if (flowVars.lastDate.isBefore(flowVars.recordDate)) {
 ---
 payload map ((payload01 , indexOfPayload01) -> {
 	location_x: payload01.longitude as :string,
-	location_y: payload01.latitude as :string
+	location_y: payload01.latitude as :string,
+	location_x: payload01.depthValue as :string
 })]]></dw:set-payload>
         </dw:transform-message>
         <file:outbound-endpoint path="C:\Apps" outputPattern="earthquakes.csv" connector-ref="File" responseTimeout="10000" doc:name="File"/>
